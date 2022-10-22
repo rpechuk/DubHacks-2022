@@ -162,12 +162,13 @@ export default StyleSheet.create({
 
   // COMPONENT - PROFILE ITEM
   containerProfileItem: {
+    height: 300,
     backgroundColor: WHITE,
-    paddingHorizontal: 10,
-    paddingBottom: 25,
-    margin: 20,
-    borderRadius: 8,
-    marginTop: -65,
+    paddingHorizontal: 5,
+    paddingBottom: 20,
+    margin: 10,
+    borderRadius: 15,
+    marginTop: -15,
     elevation: 1,
     shadowOpacity: 0.05,
     shadowRadius: 10,
@@ -191,28 +192,34 @@ export default StyleSheet.create({
     paddingTop: 25,
     paddingBottom: 5,
     color: DARK_GRAY,
-    fontSize: 15,
+    fontSize: 20,
     textAlign: "center",
   },
   descriptionProfileItem: {
     color: GRAY,
     textAlign: "center",
     paddingBottom: 20,
-    fontSize: 13,
+    fontSize: 15,
   },
   info: {
     paddingVertical: 8,
     flexDirection: "row",
     alignItems: "center",
+    textAlign: "center",
   },
   iconProfile: {
     fontSize: 12,
     color: DARK_GRAY,
     paddingHorizontal: 10,
   },
+  inputContent: {
+      color: BLACK,
+      alignItems: "center",
+      fontSize: 15,
+    },
   infoContent: {
     color: GRAY,
-    fontSize: 13,
+    fontSize: 15,
   },
 
   // CONTAINER - GENERAL
@@ -227,7 +234,7 @@ export default StyleSheet.create({
     marginHorizontal: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "right",
   },
   title: { paddingBottom: 10, fontSize: 22, color: DARK_GRAY },
 
@@ -254,12 +261,18 @@ export default StyleSheet.create({
   containerProfile: { marginHorizontal: 0 },
   photo: {
     width: DIMENSION_WIDTH,
-    height: 450,
+    height: 400, // changed from 450
+    elevation: 1,
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    shadowColor: BLACK,
+    shadowOffset: { height: 0, width: 0 },
   },
   topIconLeft: {
     paddingLeft: 20,
   },
   topIconRight: {
+    paddingLeft: 80,
     paddingRight: 20,
   },
   actionsProfile: {

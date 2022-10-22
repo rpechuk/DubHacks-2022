@@ -22,14 +22,13 @@ export type MessageT = {
 };
 
 export type ProfileItemT = {
-  age?: string;
-  info1?: string;
-  info2?: string;
-  info3?: string;
-  info4?: string;
-  location?: string;
-  matches: string;
   name: string;
+  age?: string;
+  gender?: string;
+  location?: string;
+  level?: string;
+  drive?: string;
+  hikeType?: string;
 };
 
 export type TabBarIconT = {
@@ -47,9 +46,9 @@ export type DataT = {
   message: string;
   image: any;
   age?: string;
-  info1?: string;
-  info2?: string;
-  info3?: string;
-  info4?: string;
+  gender?: string;
   location?: string;
+  level?: string;
+  drive?: string;
+  hikeType?: string;
 };
