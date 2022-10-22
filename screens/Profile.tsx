@@ -12,15 +12,14 @@ import styles, { WHITE } from "../assets/styles";
 
 const Profile = () => {
   const {
-    age,
     image,
-    info1,
-    info2,
-    info3,
-    info4,
-    location,
-    match,
     name,
+    age,
+    gender,
+    location,
+    level,
+    drive,
+    hikeType,
   } = DEMO[7];
 
   return (
@@ -30,48 +29,17 @@ const Profile = () => {
     >
       <ScrollView style={styles.containerProfile}>
         <ImageBackground source={image} style={styles.photo}>
-          <View style={styles.top}>
-            <TouchableOpacity>
-              <Icon
-                name="chevron-back"
-                size={20}
-                color={WHITE}
-                style={styles.topIconLeft}
-              />
-            </TouchableOpacity>
-
-            <TouchableOpacity>
-              <Icon
-                name="ellipsis-vertical"
-                size={20}
-                color={WHITE}
-                style={styles.topIconRight}
-              />
-            </TouchableOpacity>
-          </View>
         </ImageBackground>
 
         <ProfileItem
-          matches={match}
           name={name}
           age={age}
+          gender={gender}
           location={location}
-          info1={info1}
-          info2={info2}
-          info3={info3}
-          info4={info4}
+          level={level}
+          drive={drive}
+          hikeType={hikeType}
         />
-
-        <View style={styles.actionsProfile}>
-          <TouchableOpacity style={styles.circledButton}>
-            <Icon name="ellipsis-horizontal" size={20} color={WHITE} />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.roundedButton}>
-            <Icon name="chatbubble" size={20} color={WHITE} />
-            <Text style={styles.textButton}>Start chatting</Text>
-          </TouchableOpacity>
-        </View>
       </ScrollView>
     </ImageBackground>
   );
