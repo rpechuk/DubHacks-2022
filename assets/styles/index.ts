@@ -25,6 +25,7 @@ export default StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     margin: 10,
+    paddingBottom: 10,
     elevation: 1,
     shadowOpacity: 0.05,
     shadowRadius: 10,
@@ -88,8 +89,8 @@ export default StyleSheet.create({
     shadowOffset: { height: 10, width: 0 },
   },
   miniButton: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     borderRadius: 30,
     backgroundColor: WHITE,
     marginHorizontal: 7,
@@ -123,19 +124,19 @@ export default StyleSheet.create({
   // COMPONENT - FILTERS
   filters: {
     backgroundColor: WHITE,
-    padding: 10,
-    borderRadius: 20,
-    width: 90,
+    padding: 2,
+    width: 40,
+    height: 40,
+    borderRadius: 100,
+    // borderWidth: 2,
+    // borderColor: GRAY,
     elevation: 1,
     shadowOpacity: 0.05,
-    shadowRadius: 10,
+    shadowRadius: 20,
     shadowColor: BLACK,
     shadowOffset: { height: 0, width: 0 },
-  },
-  filtersText: {
-    color: DARK_GRAY,
-    fontSize: 13,
-    textAlign: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   // COMPONENT - MESSAGE
@@ -234,6 +235,7 @@ export default StyleSheet.create({
   // CONTAINER - HOME
   containerHome: {
     marginHorizontal: 10,
+    flexDirection: "column",
   },
 
   // CONTAINER - MATCHES
