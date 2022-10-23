@@ -119,7 +119,7 @@ export default StyleSheet.create({
     }
   },
   hikerButton: {
-    width: 275,
+    width: 300,
     height: 55,
     backgroundColor: SECONDARY_COLOR,
     margin: 10,
@@ -314,7 +314,8 @@ export default StyleSheet.create({
   // CONTAINER - SIGN UP
   containerSignUp: {
     margin: 10,
-    marginTop: 150,
+    marginTop: 100,
+    height: 600,
   },
 
   // CONTAINER - MATCHES
