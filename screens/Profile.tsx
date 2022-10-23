@@ -46,6 +46,14 @@ const writeUserData = (username: string, name: string, password: string, level: 
   });
 }
 
+const storeData = async (value: string) => {
+  try {
+    await AsyncStorage.setItem('signed_up', value)
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 const getData = async (): Promise<boolean> => {
   try {
     const value = await AsyncStorage.getItem('signed_up');
@@ -207,7 +215,11 @@ const Profile = () => {
           }}
         />
         <View style={styles.actionsProfile}>
-          <TouchableOpacity style={styles.roundedButton} onPress={() => writeUserData(state.username, state.name, state.password, state.hikerLevel)}>
+          <TouchableOpacity style={styles.roundedButton} onPress={() => {
+              writeUserData(state.username, state.name, state.password, state.hikerLevel);
+              storeData(state.username);
+              setNeedSignUp(false);
+            }}>
             <Icon name="chatbubble" size={20} color={WHITE} />
             <Text style={styles.textButton}>Sign Up</Text>
           </TouchableOpacity>
