@@ -21,6 +21,14 @@ export type MessageT = {
   name: string;
 };
 
+export type NewProfileT = {
+  name: string;
+  age?: string;
+  gender: string;
+  drive: string;
+  level: string;
+};
+
 export type ProfileItemT = {
   name: string;
   age?: string;

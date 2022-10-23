@@ -104,6 +104,56 @@ export default StyleSheet.create({
     shadowColor: DARK_GRAY,
     shadowOffset: { height: 10, width: 0 },
   },
+  loginPage: {
+    height: 55,
+    backgroundColor: SECONDARY_COLOR,
+    margin: 10,
+    padding: 8,
+    color: 'white',
+    borderRadius: 14,
+    fontSize: 15,
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  },
+  hikerButton: {
+    width: 275,
+    height: 55,
+    backgroundColor: SECONDARY_COLOR,
+    margin: 10,
+    padding: 8,
+    color: 'white',
+    borderRadius: 14,
+    fontSize: 15,
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  },
+  hikerText: {
+    color:'white',
+    textAlign:'left',
+    fontSize: 15,
+    margin: 1,
+  },
+  dropDown: {
+    width: 275,
+    height: 55,
+    backgroundColor: SECONDARY_COLOR,
+    margin: 50,
+    padding: 8,
+    color: 'white',
+    borderRadius: 14,
+    fontSize: 15,
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  },
 
   // COMPONENT - CITY
   city: {
@@ -259,6 +309,12 @@ export default StyleSheet.create({
   containerHome: {
     marginHorizontal: 10,
     flexDirection: "column",
+  },
+
+  // CONTAINER - SIGN UP
+  containerSignUp: {
+    margin: 10,
+    marginTop: 150,
   },
 
   // CONTAINER - MATCHES
