@@ -65,8 +65,8 @@ const getData = async (): Promise<boolean> => {
 }
 
 const Profile = () => {
-  const [needSignUp, setNeedSignUp] = useState(false)
-  const [range, setRange] = useState(0)
+  const [needSignUp, setNeedSignUp] = useState(false);
+  const [range, setRange] = useState(0);
   const [isCarpool, setCarpool] = useState(false);
 
   useEffect(() => {

@@ -1,19 +1,12 @@
-import React, { Children, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import { View, ImageBackground, TouchableOpacity } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
 import { City, Filters, CardItem, Icon } from "../components";
 import styles, { DISLIKE_ACTIONS, LIKE_ACTIONS } from "../assets/styles";
 import DEMO from "../assets/data/demo";
-import { State } from "react-native-gesture-handler";
 
 const Home = () => {
   const [swiper, setSwiper] = useState<CardStack | null>(null);
-
-  const parentFunction = () => {
-    setSwiper(swiper);
-    swiper?.swipeRight();
-    console.log(swiper);
-  }
 
   return (
     <ImageBackground
