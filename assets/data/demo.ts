@@ -1,4 +1,4 @@
-import { DataT } from "../../types";
+import { HikeT } from "../../types";
 import IMAGE_01 from "../images/01.jpg";
 import IMAGE_02 from "../images/02.jpg";
 import IMAGE_03 from "../images/03.jpg";
@@ -10,119 +10,33 @@ import IMAGE_08 from "../images/08.jpg";
 import IMAGE_09 from "../images/09.jpg";
 import IMAGE_10 from "../images/10.jpg";
 
-const data: DataT[] = [
+const data: HikeT[] = [
   {
-    id: 1,
-    name: "Leanne Graham",
-    isOnline: true,
-    match: "78",
-    description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    message:
-      "I will go back to Gotham and I will fight men Iike this but I will not become an executioner.",
+    name: "Rattlesnape ledge",
+    match: "4",
+    description:"Mile length: 5.3, Elevation Gain: 1459ft, Enjoy nice views of the lake from the summit",
     image: IMAGE_01,
   },
   {
-    id: 2,
-    name: "Clementine Bauch",
-    match: "93",
+    name: "Snow Lake",
+    match: "5",
     description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    isOnline: false,
-    message: "Someone like you. Someone who'll rattle the cages.",
+      "Mile length: 6.7, Elevation Gain: 1699ft, Enjoy a nice foresty trail to get to a mountain lake",
     image: IMAGE_02,
   },
   {
-    id: 3,
-    name: "Ervin Howell",
-    match: "45",
+    name: "Lake Colchuck",
+    match: "0",
     description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    isOnline: false,
-    message:
-      "Oh, hee-hee, aha. Ha, ooh, hee, ha-ha, ha-ha. And I thought my jokes were bad.",
+      "Mile length: 8.9, Elevation Gain: 3100ft, Enjoy a nice foresty trail to get to a green lake",
     image: IMAGE_03,
   },
   {
-    id: 4,
-    name: "John Lebsack",
-    match: "88",
+    name: "High Rock Lookout",
+    match: "2",
     description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    isOnline: true,
-    message: "Bats frighten me. It's time my enemies shared my dread.",
+      "Mile length: 3.2, Elevation Gain: 1299ft, Enjoy an amazing view over the mountains of the PNW",
     image: IMAGE_04,
-  },
-  {
-    id: 5,
-    name: "James Dietrich",
-    match: "76",
-    description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    isOnline: false,
-    message: "It's not who I am underneath but what I do that defines me.",
-    image: IMAGE_05,
-  },
-  {
-    id: 6,
-    name: "Patricia Schulist",
-    match: "95",
-    description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    isOnline: true,
-    message:
-      "You have nothing, nothing to threaten me with. Nothing to do with all your strength.",
-    image: IMAGE_06,
-  },
-  {
-    id: 7,
-    name: "Chelsey Weissnat",
-    match: "67",
-    description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    isOnline: true,
-    message:
-      "Never start with the head. The victim gets all fuzzy. He can't feel the next... See?",
-    image: IMAGE_07,
-  },
-  {
-    id: 8,
-    name: "Nicky Runol",
-    match: "85",
-    description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    age: "27",
-    location: "Irvine, CA",
-    level: 'Intermediate',
-    gender: "Female",
-    drive: "Yes",
-    hikeType: "Day hike, Backpacking",
-    isOnline: true,
-    message:
-      "And as for the television's so-called plan, Batman has no jurisdiction.",
-    image: IMAGE_08,
-  },
-  {
-    id: 9,
-    name: "Glenna Reichert",
-    match: "74",
-    description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    isOnline: true,
-    message:
-      "This is what happens when an unstoppable force meets an immovable object.",
-    image: IMAGE_09,
-  },
-  {
-    id: 10,
-    name: "Kurtis DuBuque",
-    match: "98",
-    description:
-      "Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.",
-    isOnline: false,
-    message:
-      "You want order in Gotham. Batman must take off his mask and turn himself in.",
-    image: IMAGE_10,
   },
 ];
 

@@ -8,20 +8,21 @@ import { Ionicons } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
 
 const ProfileItem = ({
+  phoneNum,
   name,
   age,
-  gender,
+  pronouns,
   location,
   level,
   drive,
-  hikeType,
+  distance,
 }: ProfileItemT) => (
   <View style={styles.containerProfileItem}>
 
     <Text style={styles.name}>{name}</Text>
 
     <Text style={styles.descriptionProfileItem}>
-      {age} - {gender}
+      {age} - {pronouns}
     </Text>
 
     <View style={styles.info}>
@@ -52,8 +53,8 @@ const ProfileItem = ({
       <Text style={styles.iconProfile}>
         <Foundation name="mountains" size={24} color="black" />
       </Text>
-      <Text style={styles.inputContent}>{"Types of Hiking: "}</Text>
-      <Text style={styles.infoContent}>{hikeType}</Text>
+      <Text style={styles.inputContent}>{"Driving Range: "}</Text>
+      <Text style={styles.infoContent}>{distance}</Text>
     </View>
   </View>
 );

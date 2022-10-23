@@ -8,6 +8,9 @@ import {
   TextInput,
   Slider,
   Switch,
+  Alert,
+  Button,
+  StyleSheet,
 } from "react-native";
 import { Icon, ProfileItem } from "../components";
 import DEMO from "../assets/data/demo";
@@ -18,8 +21,13 @@ import SelectDropdown from 'react-native-select-dropdown'
 import { initializeApp } from "@firebase/app";
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, orderByChild, query, ref, set, onValue, DatabaseReference } from "firebase/database";
 import internal from "stream";
+import "firebase/auth";
+import { getAuth } from "firebase/auth";
+import data from "../assets/data/demo";
+import { limitToLast } from "firebase/firestore";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAl-ejaBqqQlwmKsMnaT1HzxP1iemoxS8w",
@@ -36,14 +44,36 @@ firebase.initializeApp(firebaseConfig);
 
 const database = getDatabase();
 
+const auth = getAuth();
+const myUserId = 'itsannb';
+// const currUser = query(ref(database, 'users/' + myUserId), limitToLast(1));
+const currUser = 'users/' + myUserId;
 
-const writeUserData = (username: string, name: string, password: string, level: string) => {
-  set(ref(database, 'users/' + username), {
+const getRef = (user:string, endpoint:string):DatabaseReference => {
+  return ref(database, "users/" + user + '/' + endpoint);
+}
+
+const openAlert=()=>{
+  alert('Not enough info');
+}
+
+const writeUserData = (phoneNum: string, username: string, name: string, password: string, level: string, miles: string,
+  location: string, age: string, drive: boolean, ) => {
+  if (username==="" || name==="" || password==="" || level==="") {
+    openAlert();
+  } else {
+    set(ref(database, 'users/' + username), {
+    phoneNumber: phoneNum,
     username: username,
     name: name,
     password: password,
+    location: location,
     hikerLevel: level,
-  });
+    miles: miles,
+    age: age,
+    drive: drive,
+    });
+  }
 }
 
 const storeData = async (value: string) => {
@@ -54,10 +84,10 @@ const storeData = async (value: string) => {
   }
 }
 
-const getData = async (): Promise<boolean> => {
+const getData = async (): Promise<any> => {
   try {
     const value = await AsyncStorage.getItem('signed_up');
-    return value === null
+    return value;
   } catch(e) {
     console.error(e);
     return false
@@ -71,30 +101,23 @@ const Profile = () => {
 
   useEffect(() => {
     getData().then((val) => {
-      setNeedSignUp(needSignUp => val);
-    });
+      setNeedSignUp(needSignUp => false);
+    })
   });
 
   const [state, setState] = useState({
+    phoneNum: '',
     username: '',
     password: '',
     name: '',
     age: '',
     range: '',
+    location: '',
     drive: false,
     hikerLevel: '',
+    pronouns: '',
   });
 
-  const {
-    image,
-    name,
-    age,
-    gender,
-    location,
-    level,
-    drive,
-    hikeType,
-  } = DEMO[7];
 
   const hiker_Levels = ["Easy", "Intermediate", "Hard"];
 
@@ -109,6 +132,19 @@ const Profile = () => {
       </View>
     <View style={styles.containerSignUp}>
       <ScrollView style={styles.containerProfileItem}>
+      <TextInput
+          style={styles.loginPage}
+          placeholder='Phone Number'
+          keyboardType='numeric'
+          autoCapitalize="none"
+          placeholderTextColor='white'
+          onChangeText={val => {
+            var tempState = state;
+            tempState.phoneNum = val;
+            console.log(data[0]);
+            setState(tempState);
+          }}
+        />
         <TextInput
           style={styles.loginPage}
           placeholder='Username'
@@ -145,6 +181,17 @@ const Profile = () => {
         />
         <TextInput
           style={styles.loginPage}
+          placeholder='Location'
+          autoCapitalize="none"
+          placeholderTextColor='white'
+          onChangeText={val => {
+            var tempState = state;
+            tempState.location = val;
+            setState(tempState);
+          }}
+        />
+        <TextInput
+          style={styles.loginPage}
           placeholder='Age'
           keyboardType='numeric'
           autoCapitalize="none"
@@ -152,6 +199,17 @@ const Profile = () => {
           onChangeText={val => {
             var tempState = state;
             tempState.age = val;
+            setState(tempState);
+          }}
+        />
+        <TextInput
+          style={styles.loginPage}
+          placeholder='Pronouns'
+          autoCapitalize="none"
+          placeholderTextColor='white'
+          onChangeText={val => {
+            var tempState = state;
+            tempState.pronouns = val;
             setState(tempState);
           }}
         />
@@ -216,7 +274,8 @@ const Profile = () => {
         />
         <View style={styles.actionsProfile}>
           <TouchableOpacity style={styles.roundedButton} onPress={() => {
-              writeUserData(state.username, state.name, state.password, state.hikerLevel);
+              writeUserData(state.phoneNum, state.username, state.name, state.password, state.location, state.hikerLevel,
+              state.range, state.age, state.drive);
               storeData(state.username);
               setNeedSignUp(false);
             }}>
@@ -235,16 +294,21 @@ const Profile = () => {
         style={styles.bg}
       >
         <ScrollView style={styles.containerProfile}>
-          <ImageBackground source={image} style={styles.photo}>
-          </ImageBackground>
+        <ImageBackground
+        source={require("../assets/images/annpfp.png")}
+        style={styles.photo}
+      />
           <ProfileItem
-            name={name}
-            age={age}
-            gender={gender}
-            location={location}
-            level={level}
-            drive={drive? "can drive carpool" : "can't drive carpool"}
-            hikeType={hikeType}
+            image={'pfp.jpg'}
+            phoneNum={'4255539261'}
+            username={'itsannb'}
+            name={'Ann'}
+            age={'18'}
+            pronouns={'she/her'}
+            location={'Seattle'}
+            distance={'200+'}
+            drive={'yes'}
+            level={'Hard'}
           />
         </ScrollView>
       </ImageBackground>

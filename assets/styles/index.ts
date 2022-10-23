@@ -73,7 +73,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 550,
+    marginTop: 525,
     paddingVertical: 30,
   },
   button: {
@@ -127,7 +127,7 @@ export default StyleSheet.create({
   },
 
   hikerButton: {
-    width: 345,
+    width: DIMENSION_WIDTH - 70,
     height: 55,
     backgroundColor: SECONDARY_COLOR,
     margin: 10,

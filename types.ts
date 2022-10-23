@@ -30,13 +30,16 @@ export type NewProfileT = {
 };
 
 export type ProfileItemT = {
+  image: any;
+  phoneNum: string;
+  username: string;
   name: string;
-  age?: string;
-  gender?: string;
-  location?: string;
-  level?: string;
-  drive?: string;
-  hikeType?: string;
+  age: string;
+  pronouns: string;
+  location: string;
+  level: string;
+  distance: string;
+  drive: string;
 };
 
 export type TabBarIconT = {
@@ -45,18 +48,37 @@ export type TabBarIconT = {
   text: string;
 };
 
+// export type HikeT = {
+//   image: any;
+//   name: string;
+//   description: string;
+//   match: string;
+// }
+
 export type DataT = {
-  id: number;
-  name: string;
-  isOnline: boolean;
-  match: string;
-  description: string;
-  message: string;
   image: any;
-  age?: string;
-  gender?: string;
-  location?: string;
-  level?: string;
-  drive?: string;
-  hikeType?: string;
+  description: string;
+  match: string;
+  phoneNum: number;
+  username: string;
+  name: string;
+  age: string;
+  pronouns: string;
+  location: string;
+  level: string;
+  distance: string;
+  drive: string;
+  hikeType: string;
 };
+
+// export type UserT = {
+//   phoneNum: number;
+//   username: string;
+//   name: boolean;
+//   age: string;
+//   pronouns: string;
+//   location: string;
+//   range: any;
+//   drive: string;
+//   level: string;
+// };

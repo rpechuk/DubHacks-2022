@@ -11,6 +11,62 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+<<<<<<< Updated upstream
+=======
+const firebaseConfig = {
+  apiKey: "AIzaSyAl-ejaBqqQlwmKsMnaT1HzxP1iemoxS8w",
+  authDomain: "absolute-units.firebaseapp.com",
+  projectId: "absolute-units",
+  storageBucket: "absolute-units.appspot.com",
+  messagingSenderId: "588589820289",
+  appId: "1:588589820289:web:4eef9033c24e3ea2602080",
+  measurementId: "G-0NHHC3WPQD",
+  databaseURL: "https://absolute-units-default-rtdb.firebaseio.com"
+};
+
+const App = () => (
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Tab"
+        options={{ headerShown: false, animationEnabled: false }}
+      >
+        {() => (
+          <Tab.Navigator
+            tabBarOptions={{
+              showLabel: false,
+              activeTintColor: PRIMARY_COLOR,
+              inactiveTintColor: DARK_GRAY,
+              labelStyle: {
+                fontSize: 14,
+                textTransform: "uppercase",
+                paddingTop: 10,
+              },
+              style: {
+                backgroundColor: WHITE,
+                borderTopWidth: 0,
+                marginBottom: 0,
+                shadowOpacity: 0.05,
+                shadowRadius: 10,
+                shadowColor: BLACK,
+                shadowOffset: { height: 0, width: 0 },
+              },
+            }}
+          >
+            <Tab.Screen
+              name="Explore"
+              component={Home}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <TabBarIcon
+                    focused={focused}
+                    iconName="search"
+                    text="Explore"
+                  />
+                ),
+              }}
+            />
+>>>>>>> Stashed changes
 
 const getData = async (): Promise<boolean> => {
   try {
