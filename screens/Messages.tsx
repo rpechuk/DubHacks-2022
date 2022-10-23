@@ -17,11 +17,8 @@ const Messages = () => (
     style={styles.bg}
   >
     <View style={styles.containerMessages}>
-      <View style={styles.top}>
+      <View style={styles.topCentered}>
         <Text style={styles.title}>Messages</Text>
-        <TouchableOpacity>
-          <Icon name="ellipsis-vertical" color={DARK_GRAY} size={20} />
-        </TouchableOpacity>
       </View>
 
       <FlatList

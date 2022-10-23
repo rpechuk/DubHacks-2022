@@ -27,6 +27,9 @@ const Profile = () => {
       source={require("../assets/images/bg.png")}
       style={styles.bg}
     >
+      <View style={styles.topCentered}>
+        <Text style={styles.title}>My Profile</Text>
+      </View>
       <ScrollView style={styles.containerProfile}>
         <ImageBackground source={image} style={styles.photo}>
         </ImageBackground>

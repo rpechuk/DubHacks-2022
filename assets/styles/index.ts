@@ -72,6 +72,8 @@ export default StyleSheet.create({
   actionsCardItem: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
+    marginTop: 550,
     paddingVertical: 30,
   },
   button: {
@@ -235,9 +237,23 @@ export default StyleSheet.create({
     marginHorizontal: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "right",
+    alignItems: "center",
   },
-  title: { paddingBottom: 10, fontSize: 22, color: DARK_GRAY },
+  topCentered: {
+      paddingTop: 50,
+      marginHorizontal: 10,
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  title: {
+    paddingBottom: 10,
+    fontSize: 22,
+    color: DARK_GRAY,
+    textAlign: "center",
+    justifyContent: "center",
+    alignSelf: "center"
+  },
 
   // CONTAINER - HOME
   containerHome: {

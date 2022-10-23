@@ -10,6 +10,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const App = () => (
+
   <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen
