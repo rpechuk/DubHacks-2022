@@ -90,6 +90,7 @@ export default StyleSheet.create({
     shadowColor: DARK_GRAY,
     shadowOffset: { height: 10, width: 0 },
   },
+
   miniButton: {
     width: 50,
     height: 50,
@@ -104,6 +105,7 @@ export default StyleSheet.create({
     shadowColor: DARK_GRAY,
     shadowOffset: { height: 10, width: 0 },
   },
+
   loginPage: {
     height: 55,
     backgroundColor: SECONDARY_COLOR,
@@ -112,14 +114,20 @@ export default StyleSheet.create({
     color: 'white',
     borderRadius: 14,
     fontSize: 15,
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
   },
+
+  distance: {
+    height: 100,
+    backgroundColor: SECONDARY_COLOR,
+    margin: 10,
+    padding: 8,
+    color: 'white',
+    borderRadius: 14,
+    fontSize: 15,
+  },
+
   hikerButton: {
-    width: 300,
+    width: 345,
     height: 55,
     backgroundColor: SECONDARY_COLOR,
     margin: 10,
@@ -127,32 +135,21 @@ export default StyleSheet.create({
     color: 'white',
     borderRadius: 14,
     fontSize: 15,
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
   },
+
   hikerText: {
     color:'white',
     textAlign:'left',
     fontSize: 15,
     margin: 1,
   },
+
   dropDown: {
-    width: 275,
-    height: 55,
-    backgroundColor: SECONDARY_COLOR,
-    margin: 50,
-    padding: 8,
+    width: 150,
     color: 'white',
     borderRadius: 14,
-    fontSize: 15,
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
+    backgroundColor: "#7b55ed",
+    fontSize: 13,
   },
 
   // COMPONENT - CITY
@@ -314,8 +311,12 @@ export default StyleSheet.create({
   // CONTAINER - SIGN UP
   containerSignUp: {
     margin: 10,
-    marginTop: 100,
+    marginTop: 40,
     height: 600,
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 10,
+    shadowOpacity: 0.1,
+    shadowColor: BLACK,
   },
 
   // CONTAINER - MATCHES

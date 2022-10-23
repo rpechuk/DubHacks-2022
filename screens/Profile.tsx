@@ -6,14 +6,15 @@ import {
   ImageBackground,
   TouchableOpacity,
   TextInput,
-  InteractionManagerStatic,
+  Slider,
+  Switch,
 } from "react-native";
 import { Icon, ProfileItem } from "../components";
 import DEMO from "../assets/data/demo";
 import styles, { WHITE } from "../assets/styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { OmitProps } from "antd/lib/transfer/ListBody";
-import SelectDropdown from 'react-native-select-dropdown';
+import SelectDropdown from 'react-native-select-dropdown'
 import { initializeApp } from "@firebase/app";
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -34,6 +35,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const database = getDatabase();
+
 
 const writeUserData = (username: string, name: string, password: string, level: string) => {
   set(ref(database, 'users/' + username), {
@@ -56,6 +58,8 @@ const getData = async (): Promise<boolean> => {
 
 const Profile = () => {
   const [needSignUp, setNeedSignUp] = useState(false)
+  const [range, setRange] = useState(0)
+  const [isCarpool, setCarpool] = useState(false);
 
   useEffect(() => {
     getData().then((val) => {
@@ -69,7 +73,7 @@ const Profile = () => {
     name: '',
     age: '',
     range: '',
-    drive: '',
+    drive: false,
     hikerLevel: '',
   });
 
@@ -84,14 +88,17 @@ const Profile = () => {
     hikeType,
   } = DEMO[7];
 
-  const hiker_Levels = ["easy", "intermediate", "hard"];
+  const hiker_Levels = ["Easy", "Intermediate", "Hard"];
 
   if (needSignUp) {
     return (
       <ImageBackground
-      source={require("../assets/images/bg.png")}
-      style={styles.bg}
-    >
+        source={require("../assets/images/bg.png")}
+        style={styles.bg}
+      >
+      <View style={styles.topCentered}>
+        <Text style={styles.title}>Sign Up</Text>
+      </View>
     <View style={styles.containerSignUp}>
       <ScrollView style={styles.containerProfileItem}>
         <TextInput
@@ -140,40 +147,63 @@ const Profile = () => {
             setState(tempState);
           }}
         />
-        <TextInput
-          style={styles.loginPage}
-          placeholder='Range (miles)'
-          autoCapitalize="none"
-          keyboardType='numeric'
-          placeholderTextColor='white'
-          onChangeText={val => {
-            var tempState = state;
-            tempState.range = val;
-            setState(tempState);
-          }}
-        />
-        <TextInput
-          style={styles.loginPage}
-          placeholder='Drive'
-          autoCapitalize="none"
-          placeholderTextColor='white'
-          onChangeText={val => {
-            var tempState = state;
-            tempState.drive = val;
-            setState(tempState);
-          }}
-        />
+        <View style={styles.distance}>
+          <Text style={{
+            color: 'white',
+            fontSize: 15,
+          }}>Willing to drive {range < 200 ? range : "200+"} miles:</Text>
+          <Slider
+              value={range}
+              step={5}
+              maximumValue={200}
+              onValueChange={value => {
+                if (typeof(value) != "number") {
+                  setRange(value[0])
+                  var tempState = state;
+                  tempState.range = "" + value[0];
+                  setState(tempState);
+                } else {
+                  setRange(value)
+                  var tempState = state;
+                  tempState.range = "" + value;
+                  setState(tempState);
+                }
+              }}
+          />
+          <View style={{flexDirection:"row", alignContent:"center"}}>
+            <Text style={{
+              color: 'white',
+              fontSize: 15,
+            }}>Can drive carpool:   </Text>
+            <Switch
+              trackColor={{ false: "#767577", true: "#81b0ff" }}
+              thumbColor={isCarpool ? "#5636B8" : "#f4f3f4"}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={(value) => {
+                setCarpool(value);
+                var tempState = state;
+                tempState.drive = value;
+                setState(tempState);
+              }}
+              value={isCarpool}
+              style={{marginVertical:-5}}
+            />
+          </View>
+        </View>
         <SelectDropdown
           buttonStyle={styles.hikerButton}
           buttonTextStyle={styles.hikerText}
           dropdownStyle={styles.dropDown}
           data={hiker_Levels}
+          dropdownIconPosition="left"
+          renderDropdownIcon={(isOpened) => {
+            return (<Icon name={isOpened ? "caret-down" : "caret-up"} size={20} color={WHITE} />)
+          }}
           defaultButtonText="Hiker level"
           onSelect={(selectedItem, index) => {
             var tempState = state;
             tempState.hikerLevel = selectedItem;
             setState(tempState);
-            console.log(selectedItem, index)
           }}
         />
         <View style={styles.actionsProfile}>
@@ -201,7 +231,7 @@ const Profile = () => {
             gender={gender}
             location={location}
             level={level}
-            drive={drive}
+            drive={drive? "can drive carpool" : "can't drive carpool"}
             hikeType={hikeType}
           />
         </ScrollView>
