@@ -19,6 +19,7 @@ const App = () => (
       >
         {() => (
           <Tab.Navigator
+            initialRouteName="Profile"
             tabBarOptions={{
               showLabel: false,
               activeTintColor: PRIMARY_COLOR,
