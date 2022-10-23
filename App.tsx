@@ -2,15 +2,15 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home, Messages, Profile } from "./screens";
+import { Home, Matches, Messages, Profile } from "./screens";
 import { PRIMARY_COLOR, DARK_GRAY, BLACK, WHITE } from "./assets/styles";
 import TabBarIcon from "./components/TabBarIcon";
+import { initialiseApp } from 'firebase/app';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const App = () => (
-
   <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen

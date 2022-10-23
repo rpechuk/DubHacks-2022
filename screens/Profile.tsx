@@ -6,14 +6,43 @@ import {
   ImageBackground,
   TouchableOpacity,
   TextInput,
+  InteractionManagerStatic,
 } from "react-native";
 import { Icon, ProfileItem } from "../components";
 import DEMO from "../assets/data/demo";
 import styles, { WHITE } from "../assets/styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { OmitProps } from "antd/lib/transfer/ListBody";
-import SelectDropdown from 'react-native-select-dropdown'
+import SelectDropdown from 'react-native-select-dropdown';
+import { initializeApp } from "@firebase/app";
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+import { getDatabase, ref, set } from "firebase/database";
+import internal from "stream";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyAl-ejaBqqQlwmKsMnaT1HzxP1iemoxS8w",
+  authDomain: "absolute-units.firebaseapp.com",
+  projectId: "absolute-units",
+  storageBucket: "absolute-units.appspot.com",
+  messagingSenderId: "588589820289",
+  appId: "1:588589820289:web:4eef9033c24e3ea2602080",
+  measurementId: "G-0NHHC3WPQD",
+  databaseURL: "https://absolute-units-default-rtdb.firebaseio.com"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const database = getDatabase();
+
+const writeUserData = (username: string, name: string, password: string, level: string) => {
+  set(ref(database, 'users/' + username), {
+    username: username,
+    name: name,
+    password: password,
+    hikerLevel: level,
+  });
+}
 
 const getData = async (): Promise<boolean> => {
   try {
@@ -146,19 +175,9 @@ const Profile = () => {
             setState(tempState);
             console.log(selectedItem, index)
           }}
-          buttonTextAfterSelection={(selectedItem, index) => {
-            // text represented after item is selected
-            // if data array is an array of objects then return selectedItem.property to render after item is selected
-            return selectedItem
-          }}
-          rowTextForSelection={(item, index) => {
-            // text represented for each item in dropdown
-            // if data array is an array of objects then return item.property to represent item in dropdown
-            return item
-          }}
         />
         <View style={styles.actionsProfile}>
-          <TouchableOpacity style={styles.roundedButton}>
+          <TouchableOpacity style={styles.roundedButton} onPress={() => writeUserData(state.username, state.name, state.password, state.hikerLevel)}>
             <Icon name="chatbubble" size={20} color={WHITE} />
             <Text style={styles.textButton}>Sign Up</Text>
           </TouchableOpacity>
